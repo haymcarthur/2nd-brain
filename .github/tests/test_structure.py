@@ -295,6 +295,7 @@ class TestSkills(unittest.TestCase):
 
     def test_setup_removes_itself(self):
         text = (repo_root() / ".claude/skills/get-set-up/SKILL.md").read_text()
+        self.assertIn("`## Contributing`", text)
         self.assertIn("git rm -r .claude/skills/get-set-up", text)
         self.assertIn("Setup complete: removed the setup files", text)
 

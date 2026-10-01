@@ -307,8 +307,9 @@ then run `save`.
 Now that save has run, remove the setup files — but only after the Save step has actually finished;
 removal never happens if setup stopped early:
 1. Delete the setup files: `git rm -r .claude/skills/get-set-up`.
-2. Edit README.md to delete the whole `## For Claude: setting up from a new session` section, from the
-   heading to the end of that section.
+2. Edit README.md to delete the whole `## Contributing` and `## For Claude: setting up from a new session`
+   sections, from each heading to the end of that section. They're about the public template, not
+   their own brain.
 3. Edit CLAUDE.md's "Starting a session" paragraph: replace the sentence that offers to run
    `get-set-up` with: "If the user asks to set up again, tell them setup is already done; to add a
    source, connect it in Settings → Connectors and the next catch-up includes it."

@@ -67,6 +67,11 @@ it, Claude is already up to speed, and you never have to hunt down information a
 | `private/` | Sensitive notes, never uploaded |
 | `BRIEFING.md` | The latest catch-up: what changed, where things stand, where to start |
 
+## Contributing
+
+Suggestions are welcome. [Open an issue](https://github.com/haymcarthur/2nd-brain/issues) to report a
+problem or share an idea, or open a pull request with a change.
+
 ## For Claude: setting up from a new session
 
 If the user pasted the bootstrap prompt in a session that isn't already inside their brain folder, do this:
