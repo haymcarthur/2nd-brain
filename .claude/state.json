@@ -1,0 +1,14 @@
+{
+  "last_pulled": {},
+  "connectors": {},
+  "setup": {
+    "done_steps": [],
+    "waiting_on": []
+  },
+  "drive_inbox": null,
+  "drive_inbox_filed": [],
+  "catch_up_schedule": null,
+  "last_catch_up": null,
+  "skipped": {},
+  "sources_added": {}
+}

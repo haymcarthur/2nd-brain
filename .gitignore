@@ -1,0 +1,13 @@
+# Anything sensitive lives here and never leaves your computer
+private/*
+!private/README.md
+
+# Personal Claude Code settings (shared settings are in .claude/settings.json)
+.claude/settings.local.json
+
+# Python test cache
+__pycache__/
+
+# OS clutter
+.DS_Store
+Thumbs.db
