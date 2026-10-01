@@ -44,6 +44,8 @@ start. You are Claude, working inside it. Follow these rules every session.
     corrects you, hands over a file, mentions something sensitive, or wants a source changed, say in one
     line how that works here (correct it out loud; Downloads; `private/`; "stop pulling X"). After that,
     don't repeat it.
+16. **Other sessions may be open.** Several sessions can work in this folder at once. Re-read a file right
+    before changing it, change only your part, and never revert or discard changes you didn't make.
 
 ## Where things go
 
@@ -55,6 +57,7 @@ start. You are Claude, working inside it. Follow these rules every session.
 | Work that fits no project | `projects/general/` |
 | A decision | `decisions/` (one file each; see `decisions/README.md`) |
 | A file the user hands over | From Downloads (or chat) into the project's `notes/` (rule 14) |
+| A routine you want run automatically | `me/add-ons/` (see its README) |
 
 ## To-dos
 
@@ -69,6 +72,12 @@ To-dos live in each project's `STATE.md` under `## To do` and `## Parked`. One l
 - **Only the user's own.** Something asked of them or promised by them. Work they already did is not a
   to-do.
 - **Date it when it arose** in the source, not when you wrote it down, so aging works.
+
+**Close on evidence, from anywhere.** A to-do is checked off when a source shows it happened: a sent
+email or chat message from the user, a merged pull request or closed ticket, a meeting that took place, a
+shared file, a finished sibling to-do, or a deliverable that shipped. A to-do that a later decision made
+unnecessary is closed as superseded with that decision linked. When the calendar shows a meeting moved,
+update the due date of to-dos tied to it. Format: `- [x] <text> · added YYYY-MM-DD · done YYYY-MM-DD (<source>)`.
 
 ## Starting a session
 

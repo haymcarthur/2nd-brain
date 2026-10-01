@@ -177,7 +177,7 @@ step finishes. Then dispatch **one background agent** (the Agent tool, with `run
 these exact instructions, over the **last 60 days** of every `live` source, writing into this folder:
 
 - **No git, and no shell file operations at all.** Skip catch-up's step 1 (no fetch, checkout, or merge)
-  and step 6 (no save). It also **skips `inbox/` processing entirely** (an `inbox/` folder only exists if
+  and step 7 (no save). It also **skips `inbox/` processing entirely** (an `inbox/` folder only exists if
   the user asked for one later): catch-up step 2's "process every
   file in `inbox/`" and step 3's `git mv`/`git rm` inbox filing don't run here — the agent has no shell
   access to move or delete files safely alongside the main session, and a plain `mv`/`rm` would hit a

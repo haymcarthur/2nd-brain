@@ -17,6 +17,7 @@ REQUIRED_FILES = [
     "me/voice.md",
     "me/methods.md",
     "me/processes/README.md",
+    "me/add-ons/README.md",
     "reference/people.md",
     "reference/glossary.md",
     "reference/links.md",
@@ -363,6 +364,32 @@ class TestSkills(unittest.TestCase):
             self.assertIn(normalized_bullet, skill_normalized,
                 f"README 'How it works' bullet not found in skill:\n{bullet}")
 
+
+    def test_add_ons_run_inside_skills(self):
+        readme = (repo_root() / "me/add-ons/README.md").read_text()
+        for must in ["runs-in:", "status: active", "retired", "ends:"]:
+            self.assertIn(must, readme)
+        for skill in ["catch-up", "save"]:
+            text = (repo_root() / f".claude/skills/{skill}/SKILL.md").read_text()
+            self.assertIn("me/add-ons/", text, skill)
+            self.assertIn("runs-in", text, skill)
+        self.assertIn("`me/add-ons/", (repo_root() / "INDEX.md").read_text())
+        self.assertIn("me/add-ons/", (repo_root() / "CLAUDE.md").read_text())
+
+    def test_multi_session_guards(self):
+        save = (repo_root() / ".claude/skills/save/SKILL.md").read_text()
+        self.assertIn("index.lock", save)
+        self.assertIn("re-read", save.lower())
+        self.assertIn("never discard or revert", save)
+        self.assertIn("Other sessions may be open", (repo_root() / "CLAUDE.md").read_text())
+
+    def test_close_on_evidence_consolidated(self):
+        claude = (repo_root() / "CLAUDE.md").read_text()
+        self.assertIn("**Close on evidence, from anywhere.**", claude)
+        self.assertIn("superseded", claude)
+        for skill in ["catch-up", "save"]:
+            text = (repo_root() / f".claude/skills/{skill}/SKILL.md").read_text()
+            self.assertIn('"Close on evidence, from anywhere"', text, skill)
 
     def test_state_json_schema(self):
         state = json.loads((repo_root() / ".claude/state.json").read_text())

@@ -8,6 +8,7 @@ Every file or folder gets one line here. When you add one, add its line.
 - `me/voice.md`: how I write, with real examples
 - `me/methods.md`: frameworks and ways of working I use
 - `me/processes/`: one record per repeated kind of work; skills are built from these
+- `me/add-ons/`: custom routines that run automatically inside catch-up, save or start
 
 ## Reference
 - `reference/people.md`: who's who: name, role, team, how we relate

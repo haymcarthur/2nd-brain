@@ -7,18 +7,23 @@ description: Save what we learned into the brain and back it up. Use when the us
 
 Save runs quietly and never asks for confirmation. Do every step that applies, then report in one line.
 
+**Other sessions may be working in this folder at the same time.** Re-read a file right before changing
+it and make a targeted edit to only your part. Never rewrite a file from an earlier copy held in memory.
+
 **Exception:** during setup's background seeding (`"seeding"` is in `setup.waiting_on`), don't save yet —
 setup's Save step will.
 
 ## 1. Update each project you touched
 
 For every project worked on since the last save:
-- **Rewrite its `STATE.md` in place** so "Where things stand" is true right now. Don't append history there.
+- **Rewrite its `STATE.md` in place** so "Where things stand" is true right now. Don't append history
+  there. "In place" means re-read the file, then rewrite only the section you changed.
 - **Add to-dos** that clearly came up (someone is waiting on it, or there's a deadline), only after
   CLAUDE.md's "Before adding any to-do" checks (current state looked up, the user's own, dated when it
   arose). Use the exact format `- [ ] <text> · added YYYY-MM-DD` under `## To do`. Skip anything that
   wouldn't be missed.
-- **Check off to-dos** that were finished in this session: `- [x] <text> · added YYYY-MM-DD · done YYYY-MM-DD`.
+- **Check off to-dos** per CLAUDE.md's "Close on evidence, from anywhere" rule, including work done in
+  this session.
 - **Ideas, insights, and history** go in `projects/<name>/notes/` as a dated file, not in STATE.md.
 - Work that fits no project goes in `projects/general/`.
 - A new project folder gets a line in `INDEX.md`.
@@ -56,12 +61,17 @@ and new ways of working in `me/methods.md`. Corrections to how the user writes g
 - If **about 3** items or notes in `projects/general/` share a theme, create `projects/<theme>/` with a
   `STATE.md`, move them in, add it to `INDEX.md`, and mention it in your one-line report.
 - If this session did a recognizable kind of repeated work (a status update, prep for a recurring meeting,
-  a report), create or update `me/processes/<name>.md` per `me/processes/README.md`. Record the steps as
+  a report), create or update `me/processes/<name>.md` per `me/processes/README.md`. A repeated process
+  can become a skill (run when asked) or an add-on (runs automatically inside a skill; see
+  `me/add-ons/README.md`). Record the steps as
   actually done, the inputs, the output format, any corrections the user made, and add an Occurrences line.
 - If it now has **3 or more occurrences** and `skill-offer: not-yet`, offer once, in one sentence: *"You've
   done <process> 3 times. Want me to make it a skill so you can just say '<trigger>'?"* Set `skill-offer`
   to `offered-accepted` or `offered-declined` from the answer. On yes, build
   `.claude/skills/<name>/SKILL.md` **from the process file** and link each to the other.
+
+**Then run add-ons.** Run every add-on in `me/add-ons/` whose `runs-in` includes save and whose
+`status` is `active`, following its file.
 
 ## 6. Back it up to `main`
 
@@ -79,6 +89,10 @@ Run `git status`, then land the work on `main`:
   resolve the same way, `git commit --no-edit`, and push. Mention the conflict in one line. **If the push is
   rejected because the remote moved:** `git pull --rebase` again, then push.
 - **If there's no remote yet** (setup not finished): commit only.
+- **If a git command fails because of a lock** (`index.lock` exists, or "another git process" is
+  running): another session is mid-command. Wait a few seconds and retry, up to 5 times.
+- **A save may include another session's finished edits.** That's fine: commit them along with yours,
+  and never discard or revert changes you didn't make.
 
 ## 7. Report
 

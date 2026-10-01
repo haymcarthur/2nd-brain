@@ -109,7 +109,8 @@ For each item worth keeping (keep only what the user would miss later):
   theme: "Marketing" or "AI work" is an umbrella, and each effort inside it gets its own folder.
   When in doubt, split; small projects are cheap, and a lumped one hides what's going on. If the user
   works inside a bigger area, say so in each project's STATE.md (for example "Part of: Marketing"), not by merging them.
-- Update that project's `STATE.md` so it's true now. Put useful detail in `projects/<name>/notes/` as a dated file.
+- Update that project's `STATE.md` so it's true now: re-read it right before editing and change only the
+  section you're updating (another session may be writing to it too). Put useful detail in `projects/<name>/notes/` as a dated file.
 - Record decisions it shows, following the `save` skill's step 2 (decided → active and supersede,
   still being discussed → proposed, now clearly decided → promote).
 - If there's an `inbox/` folder, move processed files from it into the project's `notes/` with `git mv`, or remove them with `git rm`
@@ -128,9 +129,13 @@ New people go in `reference/people.md`, new terms in `reference/glossary.md`, an
 - **Add** a to-do only after CLAUDE.md's "Before adding any to-do" checks: current state looked up,
   the user's own, dated when it arose. On a 60-day fill, that date means anything older than about 3
   weeks with no later mention goes straight to `## Parked`.
-- **Close on evidence:** when an item shows a to-do happened (a sent email, a meeting outcome, a reply,
-  a merged pull request), check it off: `- [x] <text> · added YYYY-MM-DD · done YYYY-MM-DD (<source>)`.
+- **Close** to-dos per CLAUDE.md's "Close on evidence, from anywhere" rule, using everything this run pulled.
 - Run the aging pass exactly as in the `save` skill's step 4.
+
+
+**Then run add-ons.** Run every add-on in `me/add-ons/` whose `runs-in` includes catch-up and whose
+`status` is `active`, following its file. An add-on whose `ends:` date has passed or condition is met
+gets one line under "Needs you" in the briefing (once), so it can be retired.
 
 ## 6. Write the briefing
 
@@ -141,7 +146,7 @@ Rewrite `BRIEFING.md` in place (never append), dated now, from every project's `
 - **Where things stand:** one line per active project (skip any with no activity in about 3 weeks and no
   open to-dos), with the nearest due or waiting-on item.
 - **Needs you:** to-dos that are overdue, due in the next 2 days, or someone is waiting on; a decision
-  still `proposed` after about 30 days; and any source in `skipped` (see below). Leave the section out if
+  still `proposed` after about 30 days; an add-on whose `ends:` is met; and any source in `skipped` (see below). Leave the section out if
   it's empty.
 - **Start here:** one recommendation and why, in one line: the soonest deadline, then whatever someone
   is waiting on, then the project with the most new activity. Link its `STATE.md`.
