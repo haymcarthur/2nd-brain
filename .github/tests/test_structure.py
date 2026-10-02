@@ -238,6 +238,7 @@ class TestSkills(unittest.TestCase):
 
     def test_setup_verifies_routine_connectors(self):
         text = (repo_root() / ".claude/skills/get-set-up/SKILL.md").read_text()
+        self.assertIn("most capable model", text)
         self.assertIn("Read the routine back", text)
 
     def test_setup_sources_and_window(self):

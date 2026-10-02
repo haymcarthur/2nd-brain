@@ -126,7 +126,8 @@ Zoom, just tell me and I'll hook it in."* How to hook one in is in CLAUDE.md und
 > sit down in the morning and say *"catch me up"*, the work is already done.
 
 Create a **Claude Code cloud routine** yourself, using the `/schedule` capability: weekdays at 7am in
-their time zone, on their GitHub copy of this repo, with the prompt `catch me up`. Cloud routines are
+their time zone, on their GitHub copy of this repo, with the prompt `catch me up`. Use the most capable model available for the routine: a smaller model tends to skip sources and
+add-ons on a long catch-up. Cloud routines are
 scheduled in UTC, so convert their 7am local time to the matching UTC cron time yourself. It runs in the
 cloud, so their computer can be off.
 
