@@ -99,6 +99,10 @@ content, save the useful original into the right project's `notes/`; otherwise w
 content or a summary, plus the file's drive link. After filing, append its id (or name + modified time)
 to `drive_inbox_filed`.
 
+**Times come from the clock.** Get "now" from the system clock (`date -u +%Y-%m-%dT%H:%M:%SZ`) at the moment
+you write it; never estimate it or use the schedule's time. A recorded `last_pulled` or `last_catch_up` that is
+later than now is wrong: treat it as missing (pull the last 7 days) and overwrite it with a real time.
+
 After each source is read **completely**, write its `last_pulled` in `.claude/state.json` as now (UTC,
 ISO-8601). If a source was only partly read, set `last_pulled` to the end of the last week that was read
 in full, never to now, so the next run goes back for the rest. A source that fails keeps its old time, so

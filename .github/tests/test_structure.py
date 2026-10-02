@@ -270,6 +270,7 @@ class TestSkills(unittest.TestCase):
         self.assertIn("**Never skip a live source by choice.**", text)
         self.assertIn("an add-on is never optional", text)
         self.assertIn("- **Ran:**", text)
+        self.assertIn("**Times come from the clock.**", text)
 
     def test_catch_up_leaves_named_project_to_start(self):
         front = (repo_root() / ".claude/skills/catch-up/SKILL.md").read_text().split("---\n")[1].lower()
