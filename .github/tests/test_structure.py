@@ -265,6 +265,12 @@ class TestSkills(unittest.TestCase):
         self.assertIn("Start here", text)
         self.assertIn("last_catch_up", text)
 
+    def test_catch_up_never_skips_by_choice_and_reports_what_ran(self):
+        text = (repo_root() / ".claude/skills/catch-up/SKILL.md").read_text()
+        self.assertIn("**Never skip a live source by choice.**", text)
+        self.assertIn("an add-on is never optional", text)
+        self.assertIn("- **Ran:**", text)
+
     def test_catch_up_leaves_named_project_to_start(self):
         front = (repo_root() / ".claude/skills/catch-up/SKILL.md").read_text().split("---\n")[1].lower()
         self.assertNotIn("names a project", front)

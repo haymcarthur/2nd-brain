@@ -51,6 +51,10 @@ At the start of every run, check which connector tools are actually available ri
   They're pulled whenever catch-up runs on the user's computer, from the same `last_pulled` time, so
   nothing is lost. Only a source attached to the routine that then fails to load counts as `skipped`.
 
+**Never skip a live source by choice.** Connector tools may need loading before use: find and load each
+live source's tools first, then pull. A source counts as skipped only when its tool truly isn't
+available or a call fails, never because it seemed unneeded or the run is short on time.
+
 For each key that is `"live"` **and has a working tool in this run**, pull items **since its
 `last_pulled` time** (with no time recorded, pull the last 7 days):
 - **email:** inbox and sent.
@@ -134,7 +138,7 @@ New people go in `reference/people.md`, new terms in `reference/glossary.md`, an
 
 
 **Then run add-ons.** Run every add-on in `me/add-ons/` whose `runs-in` includes catch-up and whose
-`status` is `active`, following its file. An add-on whose `ends:` date has passed or condition is met
+`status` is `active`, following its file. All of them, every run: an add-on is never optional. An add-on whose `ends:` date has passed or condition is met
 gets one line under "Needs you" in the briefing (once), so it can be retired.
 
 ## 6. Write the briefing
@@ -148,6 +152,8 @@ Rewrite `BRIEFING.md` in place (never append), dated now, from every project's `
 - **Needs you:** to-dos that are overdue, due in the next 2 days, or someone is waiting on; a decision
   still `proposed` after about 30 days; an add-on whose `ends:` is met; and any source in `skipped` (see below). Leave the section out if
   it's empty.
+- **Ran:** one closing line: each live source as pulled or skipped (with the reason), and each active
+  add-on as run or not (with the reason). This is how a run that cut corners gets noticed.
 - **Start here:** one recommendation and why, in one line: the soonest deadline, then whatever someone
   is waiting on, then the project with the most new activity. Link its `STATE.md`.
 
